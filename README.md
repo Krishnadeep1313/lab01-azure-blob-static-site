@@ -1,5 +1,11 @@
 # ☁️ Lab 01: Hosting Your First Static Website in Azure
 
+🎥 WATCH ME COMPLETE THIS LAB HERE:
+
+https://www.loom.com/share/a4d0456889c942699e634698f69776ef
+
+
+
 
 ## 📋 Table of Contents
 - [Objective](#-objective)
@@ -15,6 +21,7 @@
   - [Phase 6: Validation & Testing](#phase-6-validation--testing)
 - [Live Website](#-live-website)
 - [Clean Up Resources](#-clean-up-resources)
+
 
 ---
 
