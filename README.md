@@ -1,7 +1,7 @@
 # Lab 01: Hosting Your First Static Website in Azure
 
 ## 1. Objective
-In this lab, you will deploy your first public-facing resource in Azure. Instead of building and maintaining a complex virtual machine to host a simple website, you will use Azure Blob Storage. This introduces you to the concept of **PaaS (Platform as a Service)** and **Serverless hosting**, where you focus purely on the content, and Microsoft handles the underlying infrastructure.
+In this lab, we will deploy our first public-facing resource in Azure. Instead of building and maintaining a complex virtual machine to host a simple website, we will use Azure Blob Storage. This introduces us to the concept of **PaaS (Platform as a Service)** and **Serverless hosting**, where you focus purely on the content, and Microsoft handles the underlying infrastructure.
 
 ## 2. Architecture Diagram
 
@@ -68,28 +68,38 @@ Use these naming conventions to ensure consistency throughout the deployment:
 4. **Index document name:** Enter `index.html`.
 5. **Error document path:** Enter `404.html`.
 6. Click **Save**.
-7. **CRITICAL:** Once saved, a **Primary endpoint URL** will appear (e.g., `https://stlab01jhante.z13.web.core.windows.net/`). Copy this URL and save it to your notepad. This is your website's public address.
+7. **CRITICAL:** Once saved, a **Primary endpoint URL** will appear (e.g., `https://stlab01jhante.z13.web.core.windows.net/`). Copy this URL and save it to your notepad. This is our website's public address.
 
 ### Phase 4: Create Your Website Files
-You will create two distinct HTML files: one for the main page, and one to handle bad routing requests.
+We will create two distinct HTML files: one for the main page, and one to handle bad routing requests.
 
 **1. Create the Main Page (`index.html`)**
-Open your text editor, paste the following HTML code, and save the file to your desktop as `index.html`:
+Open the text editor, paste the following HTML code, and save the file to our desktop as `index.html`:
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Cloud Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Online | Infrastructure</title>
     <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 50px; background-color: #f0f0f0; }
-        h1 { color: #0078d4; }
+        body { background-color: #0d1117; color: #58a6ff; font-family: 'Fira Code', 'Courier New', Courier, monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .terminal { text-align: left; padding: 2.5rem; border: 1px solid #30363d; border-radius: 8px; background-color: #161b22; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); width: 80%; max-width: 600px; }
+        h1 { font-size: 2rem; margin-bottom: 20px; text-shadow: 0 0 8px rgba(88, 166, 255, 0.4); }
+        p { font-size: 1.1rem; color: #8b949e; line-height: 1.5; }
+        .highlight { color: #7ee787; }
+        .cursor { animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
-    <h1>Hello from the Cloud!</h1>
-    <p>This site is hosted on Azure Blob Storage.</p>
-    <p>Deployed by: [Your Name]</p>
+    <div class="terminal">
+        <h1>> init_azure_deployment.sh<span class="cursor">_</span></h1>
+        <p>Status: <span class="highlight">[ OK ]</span> Handshake established.</p>
+        <p>Connection secured. Welcome to the infrastructure zone. Nothing but clean code, optimal routing, and low latency here.</p>
+        <p>Awaiting further instructions...</p>
+    </div>
 </body>
 </html>
 ```
@@ -99,47 +109,46 @@ Open a new file in your text editor, paste the following HTML code, and save it 
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>404 - Not Found</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Packet Dropped</title>
     <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 50px; background-color: #f0f0f0; }
-        h1 { color: #d13438; }
+        body { background-color: #0d1117; color: #ff7b72; font-family: 'Fira Code', 'Courier New', Courier, monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { text-align: center; padding: 3rem; border: 1px solid #ff7b72; border-radius: 8px; background-color: #161b22; box-shadow: 0 10px 30px rgba(255, 123, 114, 0.15); max-width: 500px; }
+        h1 { font-size: 4rem; margin: 0 0 10px 0; color: #ff7b72; }
+        p { font-size: 1.2rem; color: #c9d1d9; margin-bottom: 20px; }
+        .cmd { color: #8b949e; font-size: 0.9rem; background: #0d1117; padding: 10px; border-radius: 4px; }
     </style>
 </head>
 <body>
-    <h1>404 - Packet Dropped</h1>
-    <p>Looks like you hit a wall. The requested resource doesn't exist on this node.</p>
-    <p>Contact your local IT Cloud Engineer.</p>
+    <div class="container">
+        <h1>404</h1>
+        <p>> ERR_DESTINATION_UNREACHABLE</p>
+        <p>Looks like you hit a wall. The requested resource doesn't exist on this node.</p>
+        <div class="cmd">Contact the IT guy. (Or try clearing your DNS cache, who knows) ¯\_(ツ)_/¯</div>
+    </div>
 </body>
 </html>
 ```
 
 ### Phase 5: Upload Content
-1. Go back to your Storage Account in the Azure Portal.
+1. Go back to the Storage Account in the Azure Portal.
 2. On the left menu, click on **Containers** (under Data storage).
 3. You will see a new container named `$web`. This was created automatically when you enabled the static website feature. Click to open it.
 4. Click **Upload** at the top.
-5. Browse your computer and select **both** your `index.html` and `404.html` files.
+5. Browse the computer and select **both** your `index.html` and `404.html` files.
 6. Click **Upload**. 
 7. *Verification:* Ensure both files sit directly in the root of the `$web` container.
 
 ### Phase 6: Validation & Testing
 1. Open a new browser tab or window.
-2. Paste the **Primary endpoint URL** you copied in Phase 3 and hit Enter. You should see your "Hello from the Cloud!" message.
-3. Next, test your custom error routing by intentionally typing a bad path at the end of your URL (e.g., `https://stlab01jhante.z13.web.core.windows.net/this-doesnt-exist`). 
+2. Paste the **Primary endpoint URL** you copied in Phase 3 and hit Enter. You should see our custom message.
+3. Next, test our custom error routing by intentionally typing a bad path at the end of your URL (e.g., `https://stlab01krish.z13.web.core.windows.net/this`). 
 4. Hit Enter. You should immediately see your custom `404 - Packet Dropped` page instead of a default Azure XML error.
-5. **Congratulations!** You just deployed a resilient, serverless website.
 
 ---
-
-## 6. Troubleshooting / Common Issues
-
-*   **Issue:** "404 - The requested content does not exist" on the root URL.
-    *   **Fix:** Check your file casing. Did you name the file exactly `index.html`? Azure Blob Storage is strictly case-sensitive. `Index.html` or `index.txt` will fail.
-    *   **Fix:** Did you upload the files to the `$web` container? Uploading them to a standard container will not expose them to the web engine.
-*   **Issue:** "Storage account name is already taken" during creation.
-    *   **Fix:** Storage names operate on a global DNS namespace across all of Azure. Add random numbers to the end of your naming convention (e.g., `stlab01jhante99`).
 
 ## 7. Clean Up Resources
 *Important: Always clean up unused resources to prevent billing leakage and keep your cloud environment tidy.*
