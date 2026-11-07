@@ -1,9 +1,27 @@
-# Lab 01: Hosting Your First Static Website in Azure
+# ☁️ Lab 01: Hosting Your First Static Website in Azure
 
-## 1. Objective
+
+## 📋 Table of Contents
+- [Objective](#-objective)
+- [Architecture Diagram](#-architecture-diagram)
+- [Prerequisites](#-prerequisites)
+- [Lab Variables](#-lab-variables)
+- [Step-by-Step Instructions](#-step-by-step-instructions)
+  - [Phase 1: Create the Resource Group](#phase-1-create-the-resource-group)
+  - [Phase 2: Create the Storage Account](#phase-2-create-the-storage-account)
+  - [Phase 3: Enable Static Website Hosting](#phase-3-enable-static-website-hosting)
+  - [Phase 4: Create Your Website Files](#phase-4-create-your-website-files)
+  - [Phase 5: Upload Content](#phase-5-upload-content)
+  - [Phase 6: Validation & Testing](#phase-6-validation--testing)
+- [Live Website](#-live-website)
+- [Clean Up Resources](#-clean-up-resources)
+
+---
+
+## 🎯 Objective
 In this lab, we will deploy our first public-facing resource in Azure. Instead of building and maintaining a complex virtual machine to host a simple website, we will use Azure Blob Storage. This introduces us to the concept of **PaaS (Platform as a Service)** and **Serverless hosting**, where you focus purely on the content, and Microsoft handles the underlying infrastructure.
 
-## 2. Architecture Diagram
+## 🏗️ Architecture Diagram
 
 ```mermaid
 graph LR
@@ -22,41 +40,41 @@ graph LR
     style WebCont fill:#28a745,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
-## 3. Prerequisites
+## ✅ Prerequisites
 - [x] Active Azure Subscription (Free Tier is fully supported).
-- [x] Completed Week 1 Video Modules.
 - [x] A basic text editor (Notepad, TextEdit, or VS Code).
 
-## 4. Lab Variables (Naming Convention)
+## ⚙️ Lab Variables (Naming Convention)
 Use these naming conventions to ensure consistency throughout the deployment:
 *   **Resource Group:** `rg-lab01-[yourname]`
 *   **Location:** `East US`
 *   **Storage Account Name:** `stlab01[yourname]` 
-    * *Note: Storage account names must be globally unique across all of Azure, use only lowercase letters and numbers, and contain no special characters.*
+
+> **Note:** Storage account names must be globally unique across all of Azure, use only lowercase letters and numbers, and contain no special characters.
 
 ---
 
-## 5. Step-by-Step Instructions
+## 🚀 Step-by-Step Instructions
 
 ### Phase 1: Create the Resource Group
 1. Log in to the [Azure Portal](https://portal.azure.com).
 2. Search for **Resource Groups** in the top search bar.
 3. Click **+ Create**.
 4. Under the **Basics** tab:
-    *   **Subscription:** Select your subscription.
-    *   **Resource Group:** Enter `rg-lab01-[yourname]`.
-    *   **Region:** Select `(US) East US`.
+    * **Subscription:** Select your subscription.
+    * **Resource Group:** Enter `rg-lab01-[yourname]`.
+    * **Region:** Select `(US) East US`.
 5. Click **Review + create** -> **Create**.
 
 ### Phase 2: Create the Storage Account
 1. Search for **Storage accounts** in the top search bar.
 2. Click **+ Create**.
 3. Under the **Basics** tab:
-    *   **Resource Group:** Select `rg-lab01-[yourname]`.
-    *   **Storage account name:** `stlab01[yourname]` (e.g., `stlab01jhante`).
-    *   **Region:** `(US) East US`.
-    *   **Performance:** `Standard`.
-    *   **Redundancy:** `Locally-redundant storage (LRS)`. *(This is the most cost-effective option for labs).*
+    * **Resource Group:** Select `rg-lab01-[yourname]`.
+    * **Storage account name:** `stlab01[yourname]` (e.g., `stlab01jhante`).
+    * **Region:** `(US) East US`.
+    * **Performance:** `Standard`.
+    * **Redundancy:** `Locally-redundant storage (LRS)`. *(This is the most cost-effective option for labs).*
 4. Click **Review + create**.
 5. Wait for validation to pass, then click **Create**.
 6. When deployment finishes (approx. 30 seconds), click **Go to resource**.
@@ -68,13 +86,14 @@ Use these naming conventions to ensure consistency throughout the deployment:
 4. **Index document name:** Enter `index.html`.
 5. **Error document path:** Enter `404.html`.
 6. Click **Save**.
-7. **CRITICAL:** Once saved, a **Primary endpoint URL** will appear (e.g., `https://stlab01jhante.z13.web.core.windows.net/`). Copy this URL and save it to your notepad. This is our website's public address.
+
+> **CRITICAL:** Once saved, a **Primary endpoint URL** will appear (e.g., `https://stlab01krish.z13.web.core.windows.net/`). Copy this URL and save it to your notepad. This is our website's public address.
 
 ### Phase 4: Create Your Website Files
 We will create two distinct HTML files: one for the main page, and one to handle bad routing requests.
 
-**1. Create the Main Page (`index.html`)**
-Open the text editor, paste the following HTML code, and save the file to our desktop as `index.html`:
+#### 1. Create the Main Page (`index.html`)
+Open the text editor, paste the following HTML code, and save the file to your desktop as `index.html`:
 
 ```html
 <!DOCTYPE html>
@@ -104,7 +123,7 @@ Open the text editor, paste the following HTML code, and save the file to our de
 </html>
 ```
 
-**2. Create the Error Page (`404.html`)**
+#### 2. Create the Error Page (`404.html`)
 Open a new file in your text editor, paste the following HTML code, and save it to your desktop as `404.html`:
 
 ```html
@@ -136,11 +155,7 @@ Open a new file in your text editor, paste the following HTML code, and save it 
 ### Phase 5: Upload Content
 1. Go back to the Storage Account in the Azure Portal.
 2. On the left menu, click on **Containers** (under Data storage).
-3. You will see a new container named `$web`. This was created automatically when you enabled the static website feature. Click to open it.
-4. Click **Upload** at the top.
-5. Browse the computer and select **both** your `index.html` and `404.html` files.
-6. Click **Upload**. 
-7. *Verification:* Ensure both files sit directly in the root of the `$web` container.
+3. You will see a new container named `$web`. This was created automatically when you enabled the static website feature. Click to open it. 4. Click **Upload** at the top. 5. Browse the computer and select **both** your `index.html` and `404.html` files. 6. Click **Upload**. 7. *Verification:* Ensure both files sit directly in the root of the `$web` container.
 
 ### Phase 6: Validation & Testing
 1. Open a new browser tab or window.
@@ -150,7 +165,15 @@ Open a new file in your text editor, paste the following HTML code, and save it 
 
 ---
 
-## 7. Clean Up Resources
+## 🌐 Live Website
+
+👉 [*(Check out My Website!)*](https://stlab01krish.z13.web.core.windows.net/)
+
+👉 [*(Test the Custom 404 Error Page!)*](https://stlab01krish.z13.web.core.windows.net/lol)
+
+---
+
+## 🧹 Clean Up Resources
 *Important: Always clean up unused resources to prevent billing leakage and keep your cloud environment tidy.*
 
 1. Navigate to **Resource Groups** in the Azure Portal.
