@@ -1,9 +1,5 @@
 # Lab 01: Hosting Your First Static Website in Azure
 
-**Author:** Jhante Charles  
-**Estimated Time:** 30 Minutes  
-**Difficulty:** Beginner  
-
 ## 1. Objective
 In this lab, you will deploy your first public-facing resource in Azure. Instead of building and maintaining a complex virtual machine to host a simple website, you will use Azure Blob Storage. This introduces you to the concept of **PaaS (Platform as a Service)** and **Serverless hosting**, where you focus purely on the content, and Microsoft handles the underlying infrastructure.
 
