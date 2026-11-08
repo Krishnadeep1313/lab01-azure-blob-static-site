@@ -2,7 +2,7 @@
 
 🎥 WATCH ME COMPLETE THIS LAB HERE:
 
-https://www.loom.com/share/a4d0456889c942699e634698f69776ef
+[https://www.loom.com/share/a4d0456889c942699e634698f69776ef](https://www.loom.com/share/fe98ab1cce7b4f989a8f35076f2d05b2)
 
 
 
